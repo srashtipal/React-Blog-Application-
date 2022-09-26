@@ -1,9 +1,11 @@
+import Base from "../Components/Base";
+
 const Signup=()=>{
     return(
-<div>
-    <h1>This is Signup page</h1>
+<Base>
+<h1>This is Signup page</h1>
     <p>Welcome to Signup page</p>
-</div> 
+</Base>
    )
 }
 

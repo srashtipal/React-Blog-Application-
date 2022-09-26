@@ -11,7 +11,6 @@ const Footer=()=>{
         dark
         expand="md"
         fixed="bottom"
-        
         >
           <NavbarBrand tag={ReactLink} to="/">@ 2022 MyBlogs</NavbarBrand>
           

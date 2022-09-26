@@ -1,9 +1,11 @@
+import Base from "../Components/Base";
+
 const Login=()=>{
     return(
-<div>
-    <h1>This is Login page</h1>
+<Base>
+<h1>This is Login page</h1>
     <p>Welcome to Login page</p>
-</div> 
+</Base> 
    )
 }
 
