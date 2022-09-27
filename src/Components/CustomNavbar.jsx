@@ -39,10 +39,10 @@ const CustomNavbar=()=>{
                 <DropdownMenu right>
                   <DropdownItem tag={ReactLink} to="/Services">Contact Us</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem tag={ReactLink} to="https://github.com/">Github</DropdownItem>
-                  <DropdownItem>Facebook</DropdownItem>
-                  <DropdownItem>Instagram</DropdownItem>
-                  <DropdownItem>LinkedIn</DropdownItem>
+                  <DropdownItem href="https://github.com/srashtipal/React-Blogging-Application-">Github</DropdownItem>
+                  <DropdownItem href="https://www.facebook.com/">Facebook</DropdownItem>
+                  <DropdownItem href="https://www.instagram.com/accounts/login/">Instagram</DropdownItem>
+                  <DropdownItem href="https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Ffeed%2F&trk=login_reg_redirect">LinkedIn</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
