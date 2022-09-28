@@ -12,19 +12,23 @@ import {
     DropdownItem,
   } from 'reactstrap';
   import { NavLink as ReactLink } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const CustomNavbar=()=>{
+
+  const [isOpen,setIsOpen]=useState(false);
+
     return(
         <div>
         <Navbar 
         color="dark"
         dark
         expand="md"
-        fixed=" ">
+        fixed=" " >
           <NavbarBrand tag={ReactLink} to="/">MyBlogs</NavbarBrand>
-          <NavbarToggler  />
-          <Collapse navbar>
+          <NavbarToggler onClick={()=>setIsOpen(!isOpen)} />
+          <Collapse  isOpen={isOpen} navbar>
             <Nav className="me-auto" navbar>
             <NavItem>
                 <NavLink tag={ReactLink} to="/">Home</NavLink>
@@ -36,7 +40,7 @@ const CustomNavbar=()=>{
                 <DropdownToggle caret nav>
                   More
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu >
                   <DropdownItem tag={ReactLink} to="/Services">Contact Us</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem href="https://github.com/srashtipal/React-Blogging-Application-">Github</DropdownItem>
@@ -46,7 +50,7 @@ const CustomNavbar=()=>{
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
-            <Nav Navbar>
+            <Nav navbar>
             <NavItem>
                 <NavLink tag={ReactLink} to="/login">
                   Login
