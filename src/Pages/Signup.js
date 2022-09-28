@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     Button,
     Card,
@@ -14,6 +15,20 @@ import {
   } from "reactstrap";import Base from "../Components/Base";
 
 const Signup=()=>{
+
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        about: "",
+      });
+
+      const [error, setError] = useState({
+        errors: {},
+        
+      });
+    
+
     return(
 <Base>
 <Container>
@@ -35,8 +50,7 @@ const Signup=()=>{
                         <Label for="name">Enter Name </Label>
                         <Input
                         type="text"
-                        placeholder="Enter here"
-                        invalid="true"
+                        placeholder="Enter here"                       
                         id="name"
                         />
                     </FormGroup>
@@ -46,8 +60,7 @@ const Signup=()=>{
                         <Label for="name">Enter Email </Label>
                         <Input
                         type="text"
-                        placeholder="Enter here"
-                        invalid="true"
+                        placeholder="Enter here"                       
                         id="email"
                         />
                     </FormGroup>
@@ -58,7 +71,6 @@ const Signup=()=>{
                         <Input
                         type="password"
                         placeholder="Enter here"
-                        invalid="true"
                         id="password"
                         />
                     </FormGroup>
@@ -70,7 +82,6 @@ const Signup=()=>{
                         type="textarea"
                         placeholder="Enter here"
                         id="name"
-                        invalid="true"
                         style={{ height: "250px" }}
                         />
                     </FormGroup>
