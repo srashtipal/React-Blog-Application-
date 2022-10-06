@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
     Button,
@@ -14,8 +15,12 @@ import {
     Row,
   } from "reactstrap";import Base from "../Components/Base";
 
+
 const Signup=()=>{
 
+
+
+     //data
     const [data, setData] = useState({
         name: "",
         email: "",
@@ -23,10 +28,48 @@ const Signup=()=>{
         about: "",
       });
 
+      //error
       const [error, setError] = useState({
         errors: {},
-        
+        isError:false
       });
+
+      //for data change it works 
+      //  useEffect(()=>{
+      //   console.log(data);
+      //  },[data])
+
+      //handleChange->used for how many times data changes
+      const handleChange=(e,property)=>{
+        // console.log("name changes");
+        // console.log(e.target.value);
+        //dynamic value set
+        setData({...data,[property]:e.target.value})
+      }
+
+       //resetting form
+    const resetData=()=>
+    {
+        setData({
+            name:'',
+            email:'',
+            password:'',
+            about:''
+        })
+    }
+
+    //submit the form
+    const submitForm=(e)=>{
+      e.preventDefault()
+
+      //data print after submit
+      console.log(data)
+      
+      //data validate
+
+
+      //call server api for sending data
+    }
     
 
     return(
@@ -44,7 +87,7 @@ const Signup=()=>{
               <CardBody>
                 {/*creating form*/}
 
-                <Form>
+                <Form onSubmit={submitForm}>
                     {/*Name Field*/ }
                     <FormGroup>
                         <Label for="name">Enter Name </Label>
@@ -52,6 +95,8 @@ const Signup=()=>{
                         type="text"
                         placeholder="Enter here"                       
                         id="name"
+                        onChange={(e)=>handleChange(e,'name')}
+                        value={data.name}
                         />
                     </FormGroup>
 
@@ -62,6 +107,8 @@ const Signup=()=>{
                         type="text"
                         placeholder="Enter here"                       
                         id="email"
+                        onChange={(e)=>handleChange(e,'email')}
+                        value={data.email}
                         />
                     </FormGroup>
 
@@ -71,7 +118,9 @@ const Signup=()=>{
                         <Input
                         type="password"
                         placeholder="Enter here"
-                        id="password"
+                        id="password"                      
+                       onChange={(e)=>handleChange(e,'password')}
+                       value={data.password}
                         />
                     </FormGroup>
 
@@ -83,6 +132,8 @@ const Signup=()=>{
                         placeholder="Enter here"
                         id="name"
                         style={{ height: "250px" }}
+                        onChange={(e)=>handleChange(e,'about')}
+                        value={data.about}
                         />
                     </FormGroup>
 
@@ -93,7 +144,7 @@ const Signup=()=>{
                       Register
                     </Button>
                     <Button
-                    
+                     onClick={resetData}
                       color="secondary"
                       type="reset"
                       className="ms-2"
