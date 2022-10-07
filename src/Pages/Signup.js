@@ -1,4 +1,4 @@
-
+import { signUp } from "../Services/User-service";
 import { useState } from "react";
 import {
     Button,
@@ -64,11 +64,18 @@ const Signup=()=>{
 
       //data print after submit
       console.log(data)
-      
+
       //data validate
 
 
       //call server api for sending data
+      signUp(data).then((resp)=>{
+        console.log(resp)
+        console.log("success log")
+      }).catch((error)=>{
+        console.log(error)
+        console.log("Error log")
+      })
     }
     
 
