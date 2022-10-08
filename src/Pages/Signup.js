@@ -93,7 +93,7 @@ const Signup=()=>{
 
           <Col sm={{ size: 6, offset: 3 }}>
             <Card >
-              <CardHeader>
+              <CardHeader className="text-center">
                 <h3> Fill Information to Register !!</h3>
               </CardHeader>
 
