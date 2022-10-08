@@ -63,7 +63,7 @@ const Login=()=>{
       doLogin(data,()=>{
          console.log("Login detail save to local storage")
          //redirect to user dashboard page
-         navigate("/user")
+         navigate("/user/dashboard")
       })
        toast.success("Login success")
 
