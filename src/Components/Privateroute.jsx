@@ -3,14 +3,14 @@ import { Outlet,Navigate } from 'react-router-dom'
 import { isLoggedIn } from '../Auth/AuthIndex';
 
 const  Privateroute=()=> {
+//   if(isLoggedIn()){
+//     return<Outlet/>
+//   }else{
+//     return <Navigate to={"/login"}/>;
+//   }
+// }
 
-  
-
-  if(isLoggedIn()){
-    return<Outlet/>
-  }else{
-    return <Navigate to={"/login"}/>;
-  }
+return isLoggedIn( ) ? <Outlet/> : < Navigate to={"/login"}/>
 }
 
-export default Privateroute
+export default Privateroute;

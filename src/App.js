@@ -10,6 +10,7 @@ import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Userdashboard from './Pages/User-routes/Userdashboard';
 import Privateroute from './Components/Privateroute';
+import ProfileInfo from './Pages/User-routes/ProfileInfo'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
       <Route path="/user" element={<Privateroute/>}>
       <Route path="dashboard" element={<Userdashboard/>}/>
+      <Route path="profile-info" element={<ProfileInfo />} />
       </Route>
 
 
