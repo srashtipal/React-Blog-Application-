@@ -15,6 +15,9 @@ const AddPost=()=>{
     const [categories, setCategories] = useState([])
     const [user, setUser] = useState(undefined)
 
+    const config={
+        placeholder:"Start typing........."
+    }
 
     const [post, setPost] = useState({
         title: '',
@@ -35,6 +38,12 @@ const AddPost=()=>{
         []
     )
 
+     //field changed function
+     const fieldChanged = (event) => {
+        console.log(event)
+        setPost({ ...post, [event.target.name]: event.target.value })
+    }
+
     return(
         <div className="wrapper">
             <Card className="shadow-sm  border-0 mt-2">
@@ -50,6 +59,7 @@ const AddPost=()=>{
                     placeholder="Enter here"
                     className="rounded-0"
                     name="title"
+                    onChange={fieldChanged}
                     />
                 </div>
 
@@ -66,6 +76,7 @@ const AddPost=()=>{
                             <JoditEditor
                                 ref={editor}
                                 value={post.content}
+                                config={config}
                                 onChange={(newContent) => setContent(newContent)}
                             />
                         </div>
