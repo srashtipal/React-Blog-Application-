@@ -9,7 +9,7 @@ function Post({post={title:"This is default post title", content:"This is defaul
                     {post.title}
                 </h1>
                 <CardText>
-                   {post.content}
+                   {post.content.substring(0,60)}.....
                 </CardText>
                 <div>
                     <Button>Read More</Button>
