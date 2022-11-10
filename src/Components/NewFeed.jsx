@@ -37,9 +37,13 @@ function NewFeed(){
        
     
     const changePage=(pageNumber=0,pageSize=3)=>{
-        // if(postContent.lastPage){
-        //     return
-        // }
+         if(pageNumber>postContent.pageNumber && postContent.lastPage){
+            return;
+         }
+
+         if(pageNumber>postContent.pageNumber && postContent.pageNumber){
+            return;
+         }
         loadAllPosts(pageNumber,pageSize).then(data=>{
             setPostContext(data)
             window.scroll(0,0)
@@ -67,7 +71,7 @@ function NewFeed(){
 
                     <Pagination size="lg">
 
-                    <PaginationItem onClick={()=>changePage(--postContent.pageNumber)} disabled={postContent.pageNumber===0}>
+                    <PaginationItem onClick={()=>changePage(postContent.pageNumber-1)} disabled={postContent.pageNumber===0}>
                         <PaginationLink previous>
                              Previous
                         </PaginationLink>
@@ -85,7 +89,7 @@ function NewFeed(){
                         ))
                     }
                 
-                    <PaginationItem onClick={()=>changePage(++postContent.pageNumber)} disabled={postContent.lastPage}>
+                    <PaginationItem onClick={()=>changePage(postContent.pageNumber+1)} disabled={postContent.lastPage}>
                         <PaginationLink next>
                             Next
                         </PaginationLink >
