@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Card, CardBody, CardText } from 'reactstrap';
+import {  Card, CardBody, CardText, } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function Post({post={title:"This is default post title", content:"This is default post title"}}){
     return(
@@ -12,7 +13,7 @@ function Post({post={title:"This is default post title", content:"This is defaul
                    {post.content.substring(0,60)}.....
                 </CardText>
                 <div>
-                    <Button>Read More</Button>
+                <Link className='btn btn-secondary border-0' to= '/posts'>Read More</Link>
                 </div>
             </CardBody>
          </Card>
