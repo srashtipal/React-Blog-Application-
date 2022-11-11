@@ -2,7 +2,7 @@ import React from 'react';
 import {  Card, CardBody, CardText, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function Post({post={title:"This is default post title", content:"This is default post title"}}){
+function Post({post={ title:"This is default post title", content:"This is default post title"}}){
     return(
          <Card  className='border-0 shadow-sm mt-3'>
             <CardBody>
@@ -13,7 +13,7 @@ function Post({post={title:"This is default post title", content:"This is defaul
                    {post.content.substring(0,60)}.....
                 </CardText>
                 <div>
-                <Link className='btn btn-secondary border-0' to= '/posts'>Read More</Link>
+                <Link className='btn btn-secondary border-0' to={'/post/' + post.postId}>Read More</Link>
                 </div>
             </CardBody>
          </Card>
