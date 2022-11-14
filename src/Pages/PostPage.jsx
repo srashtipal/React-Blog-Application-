@@ -19,6 +19,7 @@ const PostPage=()=>{
 
     useEffect(() => {
         // load post of postId 
+        
         loadPost(postId).then(data => {
             console.log(data);
             setPost(data)
@@ -27,7 +28,7 @@ const PostPage=()=>{
             console.log(error)
             toast.error("Error in loading post")
         })
-
+            // eslint-disable-next-line
     }, [])
 
     const printDate = (numbers) => {

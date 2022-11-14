@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { loadAllPosts } from "../Services/Post-service";
-import { Row, Col,Pagination,PaginationItem,PaginationLink, Container } from 'reactstrap'
+import { Row, Col} from 'reactstrap'
 import Post from "./Post";
 import { toast } from "react-toastify";
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -28,7 +28,8 @@ function NewFeed(){
         console.log("loading posts")
         console.log(currentPage)
         changePage(currentPage)
-
+        
+     // eslint-disable-next-line
     }, [currentPage])
 
 
@@ -36,6 +37,7 @@ function NewFeed(){
         if (pageNumber > postContent.pageNumber && postContent.lastPage) {
             return
         }
+        // eslint-disable-next-line
         if (pageNumber < postContent.pageNumber && postContent.pageNumber == 0) {
             return
         }
@@ -66,7 +68,7 @@ function NewFeed(){
         deletePostService(post.postId).then(res => {
             console.log(res)
             toast.success("post is deleled..")
-
+                 // eslint-disable-next-line
             let newPostContents = postContent.content.filter(p => p.postId != post.postId)
             setPostContent({ ...postContent, content: newPostContents })
 
