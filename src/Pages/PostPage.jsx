@@ -10,7 +10,7 @@ import { isLoggedIn } from "../Auth/AuthIndex"
 
 
 const PostPage=()=>{
-
+    // eslint-disable-next-line    
     const { postId } = useParams()
     const [post, setPost] = useState(null)
     const [comment, setComment] = useState({
