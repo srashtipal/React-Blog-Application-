@@ -13,7 +13,7 @@ import Privateroute from './Components/Privateroute';
 import ProfileInfo from './Pages/User-routes/ProfileInfo'
 import PostPage from './Pages/PostPage';
 import UserProvider from './Context/UserProvider';
-
+import Categories from './Pages/Categories';
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
       <Route path="/about" element={<About/>}/>
       <Route path="/services" element={<Services/>}/>
       <Route path="/post/:postId" element={<PostPage />} />
+      <Route path="/categories/:categoryId" element={<Categories />} />
 
       <Route path="/user" element={<Privateroute/>}>
       <Route path="dashboard" element={<Userdashboard/>}/>
