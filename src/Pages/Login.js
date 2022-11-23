@@ -1,28 +1,29 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import {
-    Label,
-    Card,
-    CardBody,
-    CardHeader,
-    Col,
-    Container,
-    Form,
-    FormGroup,
-    Input,
-    Row,
-    Button,
-  } from "reactstrap";
+  Label,
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Input,
+  Row,
+  Button,
+} from "reactstrap";
 import Base from "../Components/Base";
 import { loginUser } from "../Services/User-service";
 import { doLogin } from "../Auth/AuthIndex";
 import { useNavigate } from "react-router-dom";
+import userContext from "../Context/userContext";
+import { useContext } from "react";
 
+const Login = () => {
+  const userContxtData = useContext(userContext);
 
-const Login=()=>{
-
-  const navigate= useNavigate()
-
+  const navigate = useNavigate();
 
   const [loginDetail, setLoginDetail] = useState({
     username: "",
@@ -48,39 +49,45 @@ const Login=()=>{
     event.preventDefault();
     console.log(loginDetail);
     //validation
-    if (
-      // eslint-disable-next-line
-      loginDetail.username.trim() == "" || loginDetail.password.trim() == "")
-       {
+    // eslint-disable-next-line 
+    if ( loginDetail.username.trim() == "" ||loginDetail.password.trim() == "" ) {
       toast.error("Username or Password  is required !!");
       return;
     }
 
     //submit the data to server to generate token
-    loginUser(loginDetail).then((data)=>{
-      console.log(data)
-      //save the data to local storage
-      doLogin(data,()=>{
-         console.log("Login detail save to local storage")
-         //redirect to user dashboard page
-         navigate("/user/dashboard")
+    loginUser(loginDetail)
+      .then((data) => {
+        console.log(data);
+
+        //save the data to localstorage
+        doLogin(data, () => {
+          console.log("login detail is saved to localstorage");
+          //redirect to user dashboard page
+          userContxtData.setUser({
+            data: data.user,
+            login: true,
+          });
+          navigate("/user/dashboard");
+        });
+
+        toast.success("Login Success");
       })
-       toast.success("Login success")
+      .catch((error) => {
+        console.log(error);
+        // eslint-disable-next-line 
+        if (error.response.status == 400 || error.response.status == 404) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Something went wrong  on sever !!");
+        }
+      });
+  };
 
-   }).catch(error=>{
-      console.log(error)
-       // eslint-disable-next-line
-      if(error.response.status==400 || error.response.status==404){
-         toast.error(error.response.data.message)
-      }else{
-      toast.error("something went wrong on server !!")}
-   })
-}
-
-    return(
-<Base>
-    <Container>
-    <Row className="mt-4">
+  return (
+    <Base>
+      <Container>
+        <Row className="mt-4">
           <Col
             sm={{
               size: 6,
@@ -88,22 +95,21 @@ const Login=()=>{
             }}
           >
             <Card >
-              <CardHeader className="text-center" >
+              <CardHeader>
                 <h3>Login Here !!</h3>
               </CardHeader>
 
               <CardBody>
-              <Form onSubmit={handleFormSubmit}>
+                <Form onSubmit={handleFormSubmit}>
                   {/* Email field */}
 
                   <FormGroup>
                     <Label for="email">Enter Email</Label>
                     <Input
                       type="text"
-                      placeholder="Enter email"
                       id="email"
-                    value={loginDetail.username}
-                    onChange={(e) => handleChange(e, "username")}
+                      value={loginDetail.username}
+                      onChange={(e) => handleChange(e, "username")}
                     />
                   </FormGroup>
 
@@ -113,7 +119,6 @@ const Login=()=>{
                     <Label for="password">Enter password</Label>
                     <Input
                       type="password"
-                      placeholder="Enter password"
                       id="password"
                       value={loginDetail.password}
                       onChange={(e) => handleChange(e, "password")}
@@ -136,12 +141,11 @@ const Login=()=>{
                 </Form>
               </CardBody>
             </Card>
-            
-            </Col>
+          </Col>
         </Row>
-    </Container>
-</Base> 
-   )
-}
+      </Container>
+    </Base>
+  );
+};
 
 export default Login;

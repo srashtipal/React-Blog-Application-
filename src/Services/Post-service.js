@@ -54,7 +54,7 @@ export function loadPostCategoryWise(categoryId) {
 }
 
 export function loadPostUserWise(userId) {
-  return privateAxios.get(`/user/${userId}/posts`).then((res) => res.data);
+  return privateAxios.get(`/users/${userId}/posts`).then((res) => res.data);
 }
 
 //delete post

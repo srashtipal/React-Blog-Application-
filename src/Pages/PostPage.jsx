@@ -1,16 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState } from "react"
+import { useEffect } from "react"
+import { Link, useParams } from "react-router-dom"
 import { Button, Card, CardBody, CardText, Col, Container, Input, Row } from "reactstrap"
-import Base from "../Components/Base";
-import { toast } from "react-toastify";
-import { createComment,loadPost } from "../Services/Post-service"
-import {BASE_URL} from "../Services/Helper";
+import Base from "../Components/Base"
+import { createComment, loadPost } from "../Services/Post-service"
+import { toast } from 'react-toastify'
+import { BASE_URL } from "../Services/Helper"
 import { isLoggedIn } from "../Auth/AuthIndex"
+const PostPage = () => {
 
-
-const PostPage=()=>{
-    // eslint-disable-next-line    
     const { postId } = useParams()
     const [post, setPost] = useState(null)
     const [comment, setComment] = useState({
@@ -19,7 +17,6 @@ const PostPage=()=>{
 
     useEffect(() => {
         // load post of postId 
-        
         loadPost(postId).then(data => {
             console.log(data);
             setPost(data)
@@ -28,7 +25,7 @@ const PostPage=()=>{
             console.log(error)
             toast.error("Error in loading post")
         })
-            // eslint-disable-next-line
+
     }, [])
 
     const printDate = (numbers) => {
@@ -148,7 +145,7 @@ const PostPage=()=>{
                                     onChange={(event) => setComment({content:event.target.value})}
                                 />
 
-                                <Button  onClick={submitPost} className="mt-2" color="dark">Submit</Button>
+                                <Button  onClick={submitPost} className="mt-2" color="primary">Submit</Button>
                             </CardBody>
                         </Card>
 
@@ -164,4 +161,4 @@ const PostPage=()=>{
     )
 }
 
-export default PostPage;
+export default PostPage
