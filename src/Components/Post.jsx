@@ -11,6 +11,7 @@ function Post({ post = { id: -1, title: "This is default post title", content: "
 
     const userContextData = useContext(userContext)
     const [user, setUser] = useState(null)
+    // eslint-disable-next-line
     const [login, setLogin] = useState(null)
     useEffect(() => {
         setUser(getCurrentUserDetail())
