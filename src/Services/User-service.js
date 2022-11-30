@@ -13,5 +13,16 @@ export const loginUser=(loginDetail)=>{
   };
 
   export const getUser=(userId)=>{
-    return myAxios.get(`/users/${userId}`).then(res=>res.data)
+    console.log(userId)
+    return myAxios.get(`/users/${userId}/`).then(res=>res.data)
   }
+
+  export const updateUser=(user,userId)=>{
+    console.log(user);
+    return myAxios.put(`/users/${userId}`,user).then(res=>res.data)
+  }
+
+  //load single post of given id
+export const loadUser = () => {
+  return myAxios.get(`/users/`).then((reponse) => reponse.data);
+};

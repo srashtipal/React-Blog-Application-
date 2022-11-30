@@ -15,6 +15,7 @@ import PostPage from './Pages/PostPage';
 import UserProvider from './Context/UserProvider';
 import Categories from './Pages/Categories';
 import UpdateBlog from './Pages/UpdateBlog';
+import UpdateProfile from './Pages/UpdateProfile';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Route path="/user" element={<Privateroute/>}>
       <Route path="dashboard" element={<Userdashboard/>}/>
       <Route path="profile-info/:userId" element={<ProfileInfo/>}/>
+      <Route path="update-profile/:userId" element={<UpdateProfile/>}/>
       <Route path="update-blog/:blogId" element={<UpdateBlog/>}/>
       </Route>
 

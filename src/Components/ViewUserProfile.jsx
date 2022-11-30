@@ -3,8 +3,12 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import { Card, CardBody,  CardFooter,  Container, Table,Button } from 'reactstrap'
 import { getCurrentUserDetail, isLoggedIn } from '../Auth/AuthIndex';
+import { Link, useParams } from 'react-router-dom';
+
 
 const ViewUserProfile = ({user}) => {
+
+  const {userId}=useParams([])
 
     const[currentUser,setCurrentUser]=useState(null);
     const [login,setlogin]=useState(false)
@@ -70,7 +74,7 @@ const ViewUserProfile = ({user}) => {
               </Table>
               {currentUser?( currentUser.id==user.id)?(
                 <CardFooter  className='text-center'>
-                <Button className='dark' >Update User</Button>
+                <Button tag={Link} to={`/user/update-profile/${userId}`} className='dark' >Update User</Button>
                 </CardFooter>
               ):' ' :''}
 
