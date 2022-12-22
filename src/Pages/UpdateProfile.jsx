@@ -65,17 +65,18 @@ const UpdateProfile = () => {
 
 
   const updateUser = (event) => {
+
     event.preventDefault()
     console.log(data)
-    doUpdateUser({ ...data,data:{ data:data.user.id }},data.id)
-    console.log(doUpdateUser)
+    doUpdateUser({ ...data, id:data.id},data.id)
+    //console.log()
         .then(res => {
             console.log(res)
             toast.success("Data updated")
         })
         .catch(error => {
             console.log(error);
-           // toast.error("Error in upading data")
+           toast.error("Error in upading data")
         })
 
 }

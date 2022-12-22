@@ -1,4 +1,5 @@
 import { myAxios } from "./Helper"
+import { privateAxios } from "./Helper";
 
 export const signUp=(User)=>{
     return myAxios
@@ -18,8 +19,8 @@ export const loginUser=(loginDetail)=>{
   }
 
   export const updateUser=(user,userId)=>{
-    console.log(user);
-    return myAxios.put(`/users/${userId}`,user).then(res=>res.data)
+    console.log(userId);
+    return privateAxios.put(`/users/${userId}`,user).then(res=>res.data)
   }
 
   //load single post of given id
